@@ -9,7 +9,7 @@ rm -rf "$SCRIPT_DIR/sparxea"
 rm -rf "$SCRIPT_DIR/bundle"
 rm -rf "$SCRIPT_DIR/wine"
 rm -f  "$SCRIPT_DIR/winetricks"
-rm -f  "$SCRIPT_DIR/sparx_installer/*.msi"
+#rm -f  "$SCRIPT_DIR/sparx_installer/*.msi"
 rm -f  "$SCRIPT_DIR/SparxEA.dmg"
 
 # Set up Wine environment

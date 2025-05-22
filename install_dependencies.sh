@@ -25,28 +25,28 @@ echo "Initializing Wine prefix..."
 
 # Apply registry settings for minimal configuration
 echo "Applying minimal registry configuration..."
-"$WINE" regedit "$SCRIPT_DIR/minimal_config.reg"
+"$WINE" regedit "$SCRIPT_DIR/reg_minimal_config.reg"
 
 # Check if winetricks exists and is executable
-if [ ! -f "$WINETRICKS_PATH" ] || [ ! -x "$WINETRICKS_PATH" ]; then
-    echo "Downloading winetricks..."
-    curl -L -o "$WINETRICKS_PATH" "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
-    chmod +x "$WINETRICKS_PATH"
-fi
+# if [ ! -f "$WINETRICKS_PATH" ] || [ ! -x "$WINETRICKS_PATH" ]; then
+#     echo "Downloading winetricks..."
+#     curl -L -o "$WINETRICKS_PATH" "https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks"
+#     chmod +x "$WINETRICKS_PATH"
+# fi
 
 # Install MSXML3, MSXML4, and MDAC using winetricks
-echo "Installing MSXML3..."
-WINE="$WINE" "$WINETRICKS_PATH" msxml3
+# echo "Installing MSXML3..."
+# WINE="$WINE" "$WINETRICKS_PATH" msxml3
 
-echo "Installing MSXML4..."
-WINE="$WINE" "$WINETRICKS_PATH" msxml4
+# echo "Installing MSXML4..."
+# WINE="$WINE" "$WINETRICKS_PATH" msxml4
 
-echo "Installing MDAC..."
-WINE="$WINE" "$WINETRICKS_PATH" mdac28
+# echo "Installing MDAC..."
+# WINE="$WINE" "$WINETRICKS_PATH" mdac28
 
-# Install Common Controls
-echo "Installing Common Controls..."
-WINE="$WINE" "$WINETRICKS_PATH" comctl32
+# # Install Common Controls
+# echo "Installing Common Controls..."
+# WINE="$WINE" "$WINETRICKS_PATH" comctl32
 
 # Apply registry settings to disable ODBC
 echo "Applying ODBC registry configurations..."

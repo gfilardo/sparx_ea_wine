@@ -1,0 +1,65 @@
+Windows Registry Editor Version 5.00
+
+; Basic Wine configuration
+[HKEY_CURRENT_USER\Software\Wine\Version]
+@="win7"
+
+; Disable crash dialog
+[HKEY_CURRENT_USER\Software\Wine\WineDbg]
+"ShowCrashDialog"=dword:00000000
+
+; Essential DLL overrides
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"msxml3"="native,builtin"
+"msxml4"="native,builtin"
+"msxml6"="native,builtin"
+"ole32"="builtin,native"
+"oleaut32"="builtin,native"
+"rpcrt4"="builtin,native"
+"urlmon"="builtin,native"
+"comctl32"="builtin,native"
+"shlwapi"="builtin,native"
+"wininet"="builtin,native"
+"riched20"="builtin,native"
+"riched32"="builtin,native"
+"gdiplus"="builtin,native"
+"comdlg32"="builtin,native"
+"shell32"="builtin,native"
+"user32"="builtin,native"
+"gdi32"="builtin,native"
+"odbccp32"="builtin,native"
+"odbc32"="builtin,native"
+"mdac"="builtin,native"
+
+; Sparx EA specific settings
+[HKEY_CURRENT_USER\Software\Wine\AppDefaults\EA.exe\DllOverrides]
+"*odbc32"="builtin,native"
+"*odbccp32"="builtin,native"
+"*oledb32"="builtin,native"
+"*msxml3"="builtin,native"
+"*msxml4"="builtin,native"
+"*msxml6"="builtin,native"
+
+; Direct3D settings
+[HKEY_CURRENT_USER\Software\Wine\Direct3D]
+"MaxVersionGL"=dword:00030002
+"DirectDrawRenderer"="opengl"
+"OffscreenRenderingMode"="fbo"
+"RenderTargetLockMode"="auto"
+"StrictDrawOrdering"="enabled"
+"UseGLSL"="enabled"
+"VideoMemorySize"="512"
+
+; Allow Windows XP look and feel for applications
+[HKEY_CURRENT_USER\Software\Wine\X11 Driver]
+"ClientSideWithRender"="Y"
+"UseXVidMode"="Y"
+"Desktop"="N"
+
+; Font settings
+[HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]
+"Arial"="Arial"
+"Courier New"="Courier New"
+"Times New Roman"="Times New Roman"
+"Tahoma"="Tahoma"
+"MS Sans Serif"="Tahoma" 

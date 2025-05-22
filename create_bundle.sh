@@ -21,13 +21,13 @@ if [ ! -f "$SCRIPT_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA
 fi
 
 # Copy config files to bundle
-cp "$SCRIPT_DIR/minimal_config.reg" "$RESOURCES_DIR/config/"
-cp "$SCRIPT_DIR/fix_common_controls.sh" "$RESOURCES_DIR/config/"
-cp "$SCRIPT_DIR/disable_odbc.reg" "$RESOURCES_DIR/config/"
-cp "$SCRIPT_DIR/aggressive_odbc_disable.reg" "$RESOURCES_DIR/config/"
+cp "$SCRIPT_DIR/reg_minimal_config.reg" "$RESOURCES_DIR/config/"
+cp "$SCRIPT_DIR/reg_fix_common_controls.sh" "$RESOURCES_DIR/config/"
+cp "$SCRIPT_DIR/reg_disable_odbc.reg" "$RESOURCES_DIR/config/"
+cp "$SCRIPT_DIR/reg_aggressive_odbc_disable.reg" "$RESOURCES_DIR/config/"
 
 # Create dummy_odbc.reg file
-cat > "$RESOURCES_DIR/config/dummy_odbc.reg" << EOF
+cat > "$RESOURCES_DIR/config/reg_dummy_odbc.reg" << EOF
 REGEDIT4
 
 ; Make Wine use its built-in ODBC32 libraries rather than looking for Windows ones
@@ -206,10 +206,10 @@ fi
 
 # Apply configurations
 echo "Applying registry configurations..."
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/minimal_config.reg" > /dev/null 2>&1 || echo "Error applying minimal_config.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/disable_odbc.reg" > /dev/null 2>&1 || echo "Error applying disable_odbc.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/aggressive_odbc_disable.reg" > /dev/null 2>&1 || echo "Error applying aggressive_odbc_disable.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/dummy_odbc.reg" > /dev/null 2>&1 || echo "Error applying dummy_odbc.reg"
+"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_minimal_config.reg" > /dev/null 2>&1 || echo "Error applying minimal_config.reg"
+"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_disable_odbc.reg" > /dev/null 2>&1 || echo "Error applying disable_odbc.reg"
+"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_aggressive_odbc_disable.reg" > /dev/null 2>&1 || echo "Error applying aggressive_odbc_disable.reg"
+"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_dummy_odbc.reg" > /dev/null 2>&1 || echo "Error applying dummy_odbc.reg"
 "\$WINE_PATH" regedit "\$RESOURCES_DIR/config/ea_specific_overrides.reg" > /dev/null 2>&1 || echo "Error applying ea_specific_overrides.reg"
 
 # Create a config file to disable ODBC if it doesn't exist
