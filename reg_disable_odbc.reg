@@ -1,0 +1,40 @@
+Windows Registry Editor Version 5.00
+
+; Disable ODBC functionality in Enterprise Architect
+[HKEY_CURRENT_USER\Software\Sparx Systems\EA400\EA\OPTIONS]
+"ODBC Timeout"=dword:00000000
+"ODBC Logging"=dword:00000000
+"ODBC Driver"=""
+"ODBC DSN"=""
+"ODBC CustomString"=""
+"ODBC Username"=""
+"ODBC Password"=""
+"ODBC Type"=dword:00000000
+
+; Mark the startup as "Standalone"
+[HKEY_CURRENT_USER\Software\Sparx Systems\EA400\EA\OPTIONS]
+"Standalone"=dword:00000001
+"ShowStartPage"=dword:00000000
+"Alternative DB Connect"=dword:00000000
+
+; Disable database connections
+[HKEY_CURRENT_USER\Software\Sparx Systems\EA400\EA\OPTIONS]
+"DBConnectTimeout"=dword:00000000
+"DatabaseConnections"=dword:00000000
+"ConnectionString"=""
+"DBType"=dword:00000000
+
+; Additional ODBC-related settings
+[HKEY_CURRENT_USER\Software\Sparx Systems\EA400\EA\OPTIONS]
+"UseODBC"=dword:00000000
+"EANoODBC"=dword:00000001
+"SkipODBCCheck"=dword:00000001
+"DisableODBCDialog"=dword:00000001
+
+; System-wide settings
+[HKEY_LOCAL_MACHINE\SOFTWARE\ODBC]
+"DisableODBC"=dword:00000001
+
+; Disable MSDASQL
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\MSDASQL]
+"DisableLoad"=dword:00000001 

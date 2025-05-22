@@ -1,0 +1,16 @@
+REGEDIT4
+
+; Make Wine use its built-in ODBC32 libraries rather than looking for Windows ones
+[HKEY_CURRENT_USER\Software\Wine\DllOverrides]
+"odbc32"="builtin"
+"odbccp32"="builtin"
+"odbccu32"="builtin"
+"odbcbcp"="builtin"
+"msado15"="builtin" 
+"msdasql"="builtin"
+"sqlsrv32"="builtin"
+"msdaer"="builtin"
+"msdaenum"="builtin"
+"msdadiag"="builtin"
+"msdasc"="builtin"
+"msdart"="builtin" 

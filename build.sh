@@ -9,7 +9,7 @@ rm -rf "$SCRIPT_DIR/sparxea"
 rm -rf "$SCRIPT_DIR/bundle"
 rm -rf "$SCRIPT_DIR/wine"
 rm -f  "$SCRIPT_DIR/winetricks"
-rm -rf "$SCRIPT_DIR/sparx_installer"
+rm -f  "$SCRIPT_DIR/sparx_installer/*.msi"
 rm -f  "$SCRIPT_DIR/SparxEA.dmg"
 
 # Set up Wine environment
@@ -30,11 +30,9 @@ echo "Installing Sparx Enterprise Architect..."
 echo "===================================================="
 "$SCRIPT_DIR/install_sparx.sh"
 
-exit 0;
-
 # Create app bundle with the simplified approach
 echo "Creating app bundle..."
-"$SCRIPT_DIR/create_simple_bundle.sh"
+"$SCRIPT_DIR/create_bundle.sh"
 
 echo "Rebuild completed."
 echo "You can now run Sparx Enterprise Architect using:"

@@ -1,0 +1,42 @@
+Windows Registry Editor Version 5.00
+
+; Remove all ODBC drivers
+[HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBCINST.INI\ODBC Drivers]
+"SQL Server"=-
+"Microsoft Access Driver (*.mdb)"=-
+"Microsoft Excel Driver (*.xls)"=-
+"Microsoft ODBC for Oracle"=-
+"Microsoft Paradox Driver (*.db)"=-
+"Microsoft Text Driver (*.txt; *.csv)"=-
+"Microsoft Visual FoxPro Driver"=-
+"Microsoft dBase Driver (*.dbf)"=-
+"Microsoft Access dBASE Driver (*.dbf, *.ndx, *.mdx)"=-
+"Microsoft Access Text Driver (*.txt, *.csv)"=-
+"ODBC Driver 13 for SQL Server"=-
+"ODBC Driver 17 for SQL Server"=-
+"Microsoft ODBC Driver 13 for SQL Server"=-
+"Microsoft ODBC Driver 17 for SQL Server"=-
+
+; Remove ODBC core component entries
+[HKEY_LOCAL_MACHINE\SOFTWARE\ODBC]
+"Core"=-
+"ODBCINST.INI"=-
+"ODBC.INI"=-
+
+; Remove ODBC Registry keys
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ODBC]
+"Installed"=dword:00000000
+
+; Completely disable ODBC in Enterprise Architect
+[HKEY_CURRENT_USER\Software\Sparx Systems\EA400\EA\OPTIONS]
+"ODBC Type"=dword:00000000
+"UseODBC"=dword:00000000
+"ODBCDisabled"=dword:00000001
+"DatabaseType"=dword:00000000
+"RepositoryType"="EAP"
+"ConnectionType"="Local"
+"ForceOffline"=dword:00000001
+"Standalone"=dword:00000001
+"SkipODBCValidation"=dword:00000001
+"AlwaysOffline"=dword:00000001
+"NeverConnectToDB"=dword:00000001

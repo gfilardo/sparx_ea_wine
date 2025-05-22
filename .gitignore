@@ -1,4 +1,5 @@
+bundle
 wine
 sparxea
-sparx_installer
 winetricks
+sparx_installer/**/*.msi

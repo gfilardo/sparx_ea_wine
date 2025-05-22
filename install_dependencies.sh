@@ -11,8 +11,8 @@ WINETRICKS_PATH="$SCRIPT_DIR/winetricks"
 export WINEPREFIX="$WINEPREFIX"
 export WINEARCH="win64"
 export WINE="$WINE_BIN"
-export WINESERVER="$SCRIPT_DIR/wine/bin/wineserver"
-export PATH="$SCRIPT_DIR/wine/bin:$PATH"
+export WINESERVER="$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin/wineserver"
+export PATH="$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin:$PATH"
 
 echo "Installing Wine dependencies for Sparx EA..."
 
@@ -50,9 +50,9 @@ WINE="$WINE" "$WINETRICKS_PATH" comctl32
 
 # Apply registry settings to disable ODBC
 echo "Applying ODBC registry configurations..."
-"$WINE" regedit "$SCRIPT_DIR/disable_odbc.reg"
-"$WINE" regedit "$SCRIPT_DIR/aggressive_odbc_disable.reg"
-"$WINE" regedit "$SCRIPT_DIR/dummy_odbc.reg"
+"$WINE" regedit "$SCRIPT_DIR/reg_disable_odbc.reg"
+"$WINE" regedit "$SCRIPT_DIR/reg_aggressive_odbc_disable.reg"
+"$WINE" regedit "$SCRIPT_DIR/reg_dummy_odbc.reg"
 
 # Apply fix for Common Controls
 echo "Applying Common Controls fix..."
