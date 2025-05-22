@@ -3,3 +3,4 @@ wine
 sparxea
 winetricks
 sparx_installer/**/*.msi
+.DS_Store
