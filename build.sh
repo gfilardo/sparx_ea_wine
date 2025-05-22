@@ -31,10 +31,13 @@ echo "===================================================="
 "$SCRIPT_DIR/install_sparx.sh"
 
 # Create app bundle with the simplified approach
+echo "===================================================="
 echo "Creating app bundle..."
+echo "===================================================="
 "$SCRIPT_DIR/create_bundle.sh"
 
+echo "===================================================="
 echo "Rebuild completed."
-echo "You can now run Sparx Enterprise Architect using:"
-echo "  ./run_sparx_direct.sh"
-echo "Or distribute the app bundle from bundle/SparxEA.app" 
+echo "You can now run bundle/SparxEA.app" 
+echo "===================================================="
+open "$SCRIPT_DIR/bundle"
