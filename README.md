@@ -8,6 +8,14 @@ This project creates a MacOs app bundle for Sparx Enterprise Architect embedding
 2) Run `build.sh` from the terminal This will create the app bundle and open a finder window on the directory with the built app
 3) Have fun running the Sparx EA.
 
-# Warning
+# Warnings
 
 This project is a Proof of Concept. For security purposes, Wine Crossover, Winetricks and related libraries should be assessed against a digest (sha256 or similar).
+
+The wine menu builder (`winemenubuilder.exe`) could be flagged as malware by certain anti-malware.
+
+# Next steps
+
+- Remove dependency from winetricks
+- Simplify registry overrides
+- Remove dependency on `winemenubuilder.exe`
