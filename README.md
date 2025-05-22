@@ -1,6 +1,6 @@
 # Sparx Enterprise Architect Mac App bundle builder
 
-This project creates a MacOS app bundle for Sparx Enterprise Architect embedding SparxEA, and Wine Crossover.
+This project creates a MacOS app bundle for Sparx Enterprise Architect with SparxEA and Wine Crossover.
 
 # How to run this project 
 
