@@ -24,11 +24,15 @@ curl -L -o "$WINE_DOWNLOAD_PATH" "$WINE_RELEASE_URL"
 # Extract Wine to our directory
 echo "Extracting Wine package..."
 mkdir -p "/tmp/wine_extract"
-tar -xf "$WINE_DOWNLOAD_PATH" -C "/tmp/wine_extract"
+tar -xf "$WINE_DOWNLOAD_PATH" --exclude winemenubuilder.exe -C "/tmp/wine_extract"
 
 # Copy the extracted files to our Wine directory
 echo "Installing Wine..."
 cp -R "/tmp/wine_extract"/* "$WINE_DIR/"
+
+# Remove winemenubuilder.exe to prevent issues
+echo "Removing winemenubuilder.exe..."
+find "$WINE_DIR" -name "winemenubuilder.exe" -exec rm -f {} \;
 
 # Clean up
 rm -rf "/tmp/wine_extract"

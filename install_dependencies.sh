@@ -27,6 +27,9 @@ echo "Initializing Wine prefix..."
 echo "Applying minimal registry configuration..."
 "$WINE" regedit "$SCRIPT_DIR/reg_minimal_config.reg"
 
+echo "Disable winemenubuilder..."
+"$WINE" regedit "$SCRIPT_DIR/reg_disable_winemenubuilder.reg"
+
 # Check if winetricks exists and is executable
 # if [ ! -f "$WINETRICKS_PATH" ] || [ ! -x "$WINETRICKS_PATH" ]; then
 #     echo "Downloading winetricks..."

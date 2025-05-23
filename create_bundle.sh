@@ -211,6 +211,7 @@ echo "Applying registry configurations..."
 "\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_aggressive_odbc_disable.reg" > /dev/null 2>&1 || echo "Error applying aggressive_odbc_disable.reg"
 "\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_dummy_odbc.reg" > /dev/null 2>&1 || echo "Error applying dummy_odbc.reg"
 "\$WINE_PATH" regedit "\$RESOURCES_DIR/config/ea_specific_overrides.reg" > /dev/null 2>&1 || echo "Error applying ea_specific_overrides.reg"
+"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_disable_winemenubuilder.reg" > /dev/null 2>&1 || echo "Error applying reg_disable_winemenubuilder.reg"
 
 # Create a config file to disable ODBC if it doesn't exist
 if [ ! -f "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/no_odbc.ini" ]; then
@@ -410,6 +411,14 @@ EOF
 
 # Make the script executable
 chmod +x "$RESOURCES_DIR/config/fix_common_controls.sh"
+
+# Create additional override for winemenubuilder
+cat > "$RESOURCES_DIR/config/reg_disable_winemenubuilder.reg" << EOF
+REGEDIT4
+
+[HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides]
+"winemenubuilder.exe"=""
+EOF
 
 echo "App bundle created at $BUNDLE_DIR"
 echo "To use, copy the entire SparxEA.app folder to your Applications directory or distribute it." 
