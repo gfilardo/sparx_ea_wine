@@ -12,10 +12,7 @@ This project creates a MacOS app bundle for Sparx Enterprise Architect with Spar
 
 This project is a Proof of Concept. For security purposes, Wine Crossover, Winetricks and related libraries should be assessed against a digest (sha256 or similar).
 
-The wine menu builder (`winemenubuilder.exe`) could be flagged as malware by certain anti-malware.
+# Note
 
-# Next steps
+The wine menu builder (`winemenubuilder.exe`) could be flagged as malware by certain anti-malware. It has therefore been removed. This should not create issues, as Sparx Enterprise Architect uses a ribbon interface.
 
-- Remove dependency from winetricks
-- Simplify registry overrides
-- Remove dependency on `winemenubuilder.exe`
