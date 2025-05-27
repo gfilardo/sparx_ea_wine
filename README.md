@@ -14,7 +14,7 @@ The builder uses Wine Crossover v23.7.1_1, and has been tested with Sparx Enterp
 
 # Building a dmg
 
-In order to build a `.dmg` archive, run `./create_dmg.sh` after a successful buid.
+In order to build a `.dmg` archive, run `./create_dmg.sh` after a successful buid. The `SparxEA.dmg` file will be created in the project root.
 
 # Warnings
 
