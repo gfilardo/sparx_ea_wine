@@ -4,7 +4,7 @@ This project creates a MacOS app bundle for Sparx Enterprise Architect with Spar
 
 Once the bundle is created, it is possible to distribute, install and run it as any other MacOS App, without requiring a globally installed wine, as all the dependencies are within the bundle itself.
 
-The builder uses Wine Crossover v23.7.1_1, and has been tested with **Sparx Enterprise Architect Trial v17.1**. The full version of Sparx Enterprise Architect has been tested and also works. In order to run it, this project requires just minor adjustments (changing the names of the installer and of the installation directory).
+The builder uses **Wine Crossover v23.7.1_1**, and has been tested with **Sparx Enterprise Architect Trial v17.1**. The full version of Sparx Enterprise Architect has been tested and also works. In order to run it, this project requires just minor adjustments (changing the names of the installer and of the installation directory).
 
 # How to run this project 
 
