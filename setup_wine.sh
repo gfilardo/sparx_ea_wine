@@ -19,7 +19,18 @@ WINE_DOWNLOAD_PATH="/tmp/wine-crossover.tar.xz"
 # Download Wine
 curl -L -o "$WINE_DOWNLOAD_PATH" "$WINE_RELEASE_URL"
 
-#TODO check sha256sum
+# Verify SHA256 checksum
+echo "Verifying SHA256 checksum..."
+ACTUAL_SHA256=$(shasum -a 256 "$WINE_DOWNLOAD_PATH" | cut -d' ' -f1)
+if [ "$ACTUAL_SHA256" != "$WINE_SHA256SUM" ]; then
+    echo "ERROR: SHA256 checksum mismatch!"
+    echo "Expected: $WINE_SHA256SUM"
+    echo "Actual:   $ACTUAL_SHA256"
+    echo "The downloaded file may be corrupted or tampered with."
+    rm "$WINE_DOWNLOAD_PATH"
+    exit 1
+fi
+echo "SHA256 checksum verified successfully."
 
 # Extract Wine to our directory
 echo "Extracting Wine package..."
