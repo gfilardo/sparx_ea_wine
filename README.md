@@ -18,7 +18,7 @@ In order to build a `.dmg` archive, run `./create_dmg.sh` after a successful bui
 
 # Note
 
-+ The project downloads Wine Crossover v23.7.1_1 from github. To ensure that the archive is not corrupted or that it has not been tampered with, it is assessed against a sha256 digest. To update to a new version, both the archive URI and the digest need to be updated in the `setup_wine.sh` script.
++ The project downloads Wine Crossover v23.7.1_1 from github. To ensure that the archive is not corrupted or that it has not been tampered with, it is assessed against a sha256 digest. To update to a new version, both the archive URI and the digest need to be updated in the `config.sh` script.
 
 + As wine menu builder (`winemenubuilder.exe`) could be mistakenly flagged as malware by certain anti-malware, it is excluded from final bundle. This won't create issues, as Sparx Enterprise Architect uses a ribbon interface, and does not require it.
 
