@@ -5,7 +5,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WINEPREFIX="$SCRIPT_DIR/sparxea/wineprefix"
 WINE_BIN="$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin/wine64"
-EA_PATH="$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/EA.exe"
+EA_PATH="$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/EA.exe"
 
 # Set Wine environment variables
 export WINEPREFIX="$WINEPREFIX"

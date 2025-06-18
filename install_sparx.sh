@@ -23,7 +23,8 @@ echo "Installing Sparx Enterprise Architect..."
 # Verify that the MSI installer exists
 if [ ! -f "$MSI_INSTALLER_FILE" ]; then
     echo "Error: Sparx Enterprise Architect installer not found at $MSI_INSTALLER_FILE"
-    echo "Please manually download the installer from the Sparx Systems website and place it in the $MSI_INSTALLER_DIR directory."
+    echo "Please manually place the installer in the $MSI_INSTALLER_DIR directory with the name easetup_x64.msi"
+    echo "The installer for the Trial version can be downloaded from the Sparx Systems website."
     echo "Download URL: https://sparxsystems.com/bin/easetup_x64.msi"
     echo "Note: You may need to register for a trial on their website first."
     exit 1
@@ -33,7 +34,19 @@ fi
 echo "Running MSI installer..."
 "$WINE" msiexec /i "$MSI_INSTALLER_FILE" /quiet /norestart
 
+# in order to support both the trial and the full version, rename the trial 
+# installation directory to the full version directory
+TRIAL_DIR="$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial"
+FULL_DIR="$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA"
+
+# The trial version installer does not support the /d command line parameter
+# to specify the installation directory. Moving the installation manually, instead.
+if [ -d "$TRIAL_DIR" ] && [ ! -d "$FULL_DIR" ]; then
+    echo "Renaming trial installation directory to full version directory..."
+    mv "$TRIAL_DIR" "$FULL_DIR"
+fi
+
 echo "Creating shortcut in Wine desktop..."
-ln -sf "$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/EA.exe" "$WINEPREFIX/drive_c/users/Public/Desktop/Enterprise Architect.lnk"
+ln -sf "$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/EA.exe" "$WINEPREFIX/drive_c/users/Public/Desktop/Enterprise Architect.lnk"
 
 echo "Sparx Enterprise Architect installation completed." 

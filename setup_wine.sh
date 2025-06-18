@@ -1,10 +1,12 @@
 #!/bin/bash
 set -e
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/config.sh"
+
 # Set paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WINE_DIR="$SCRIPT_DIR/wine"
-WINE_SHA256SUM="e24ba084737c8823e8439f7cb75d436a917fd92fc34b832bcaa0c0037eb33d03"
 
 echo "Downloading Wine..."
     
@@ -13,7 +15,6 @@ mkdir -p "$WINE_DIR"
 
 # Use Homebrew version of Wine-Crossover
 echo "Downloading Wine Crossover from GitHub release..."
-WINE_RELEASE_URL="https://github.com/Gcenx/winecx/releases/download/crossover-wine-23.7.1-1/wine-crossover-23.7.1-1-osx64.tar.xz"
 WINE_DOWNLOAD_PATH="/tmp/wine-crossover.tar.xz"
 
 # Download Wine

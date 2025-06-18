@@ -14,7 +14,7 @@ mkdir -p "$RESOURCES_DIR/config"
 mkdir -p "$RESOURCES_DIR/wine"
 
 # Make sure Sparx EA is installed
-if [ ! -f "$SCRIPT_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA Trial/EA.exe" ]; then
+if [ ! -f "$SCRIPT_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA/EA.exe" ]; then
   echo "Error: Enterprise Architect does not appear to be installed correctly."
   echo "Please run ./install_sparx.sh first."
   exit 1
@@ -84,8 +84,8 @@ echo "Copying Sparx EA..."
 cp -R "$SCRIPT_DIR/sparxea/wineprefix" "$RESOURCES_DIR/sparxea/"
 
 # Create no_odbc.ini file
-mkdir -p "$RESOURCES_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA Trial"
-cat > "$RESOURCES_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA Trial/no_odbc.ini" << EOF
+mkdir -p "$RESOURCES_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA"
+cat > "$RESOURCES_DIR/sparxea/wineprefix/drive_c/Program Files/Sparx Systems/EA/no_odbc.ini" << EOF
 [DATABASE]
 JET4=[JET 4.0]
 MYSQL=[MySQL]
@@ -108,8 +108,8 @@ cat > "$RESOURCES_DIR/sparxea/wineprefix/drive_c/ea_launcher.bat" << EOF
 @echo off
 set EA_NO_ODBC=1
 set DISABLE_ODBC=1
-cd "C:\Program Files\Sparx Systems\EA Trial\"
-"C:\Program Files\Sparx Systems\EA Trial\EA.exe" -no_odbc
+cd "C:\Program Files\Sparx Systems\EA\"
+"C:\Program Files\Sparx Systems\EA\EA.exe" -no_odbc
 EOF
 
 # Create Info.plist
@@ -214,10 +214,10 @@ echo "Applying registry configurations..."
 "\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_disable_winemenubuilder.reg" > /dev/null 2>&1 || echo "Error applying reg_disable_winemenubuilder.reg"
 
 # Create a config file to disable ODBC if it doesn't exist
-if [ ! -f "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/no_odbc.ini" ]; then
+if [ ! -f "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/no_odbc.ini" ]; then
   echo "Creating no_odbc.ini file..."
-  mkdir -p "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial"
-  cat > "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/no_odbc.ini" << EOT
+  mkdir -p "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA"
+  cat > "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/no_odbc.ini" << EOT
 [DATABASE]
 JET4=[JET 4.0]
 MYSQL=[MySQL]
@@ -232,10 +232,10 @@ EOT
 fi
 
 # Create EA.exe.manifest if it doesn't exist
-if [ ! -f "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/EA.exe.manifest" ]; then
+if [ ! -f "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/EA.exe.manifest" ]; then
   echo "Creating EA.exe manifest..."
-  mkdir -p "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial"
-  cat > "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/EA.exe.manifest" << EOT
+  mkdir -p "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA"
+  cat > "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/EA.exe.manifest" << EOT
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
   <assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="amd64" publicKeyToken="6595b64144ccf1df" language="*" />
@@ -254,8 +254,8 @@ if [ ! -f "\$WINEPREFIX/drive_c/ea_launcher.bat" ]; then
 @echo off
 set EA_NO_ODBC=1
 set DISABLE_ODBC=1
-cd "C:\\Program Files\\Sparx Systems\\EA Trial\\"
-"C:\\Program Files\\Sparx Systems\\EA Trial\\EA.exe" -no_odbc
+cd "C:\\Program Files\\Sparx Systems\\EA\\"
+"C:\\Program Files\\Sparx Systems\\EA\\EA.exe" -no_odbc
 EOT
 fi
 
@@ -344,8 +344,8 @@ EOT
 
 # Also create a direct manifest for EA.exe
 echo "Creating EA.exe manifest..."
-mkdir -p "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial"
-cat > "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA Trial/EA.exe.manifest" << EOT
+mkdir -p "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA"
+cat > "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/EA.exe.manifest" << EOT
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
   <assemblyIdentity type="win32" name="Microsoft.Windows.Common-Controls" version="6.0.0.0" processorArchitecture="amd64" publicKeyToken="6595b64144ccf1df" language="*" />
