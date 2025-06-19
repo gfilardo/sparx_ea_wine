@@ -16,9 +16,12 @@ The builder uses **Wine Crossover v23.7.1_1**, and has been tested with **Sparx 
 
 In order to build a `.dmg` archive, run `./create_dmg.sh` after a successful buid. The `SparxEA.dmg` file will be created in the project root.
 
-# Note
+# Notes
 
 + The project downloads Wine Crossover v23.7.1_1 from github. To ensure that the archive is not corrupted or that it has not been tampered with, it is assessed against a sha256 digest. To update to a new version, both the archive URI and the digest need to be updated in the `config.sh` script.
 
 + As wine menu builder (`winemenubuilder.exe`) could be mistakenly flagged as malware by certain anti-malware, it is excluded from final bundle. This won't create issues, as Sparx Enterprise Architect uses a ribbon interface, and does not require it.
+
++ The generated bundle has been tested to work on Archimate diagrams from a cloud repository. Other use cases have not been tested and might require additional configuration - e.g. ODBC drivers, msxml3, msxml4, mdac28 etc. 
+Refer to the [SparxSystems documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.1/getting_started/install_ea_wine.html) to address other use cases. 
 
