@@ -67,7 +67,7 @@ REGEDIT4
 "uxtheme"="native,builtin"
 EOF
 
-# Copy Wine from the Crossover app
+# Copy Wine from the downloaded archive
 echo "Copying Wine..."
 # Create the correct directory structure
 mkdir -p "$RESOURCES_DIR/wine/bin"

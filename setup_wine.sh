@@ -13,9 +13,9 @@ echo "Downloading Wine..."
 # Create Wine directory if it doesn't exist
 mkdir -p "$WINE_DIR"
 
-# Use Homebrew version of Wine-Crossover
-echo "Downloading Wine Crossover from GitHub release..."
-WINE_DOWNLOAD_PATH="/tmp/wine-crossover.tar.xz"
+# Use Homebrew version of Wine
+echo "Downloading Wine from GitHub release..."
+WINE_DOWNLOAD_PATH="/tmp/wine-stable.tar.xz"
 
 # Download Wine
 curl -L -o "$WINE_DOWNLOAD_PATH" "$WINE_RELEASE_URL"

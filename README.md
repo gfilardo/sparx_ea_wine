@@ -1,10 +1,10 @@
 # Sparx Enterprise Architect Mac App bundle builder
 
-This project creates a MacOS app bundle for Sparx Enterprise Architect with SparxEA and Wine Crossover.
+This project creates a MacOS app bundle for Sparx Enterprise Architect with SparxEA and Wine-Stable.
 
 Once the bundle is created, it is possible to distribute, install and run it as any other MacOS App, without requiring a globally installed wine, as all the dependencies are within the bundle itself.
 
-The builder uses **Wine Crossover v23.7.1_1**, and has been tested with **Sparx Enterprise Architect Trial v17.1** and **Sparx Enterprise Architect Full v17.1** .
+The builder uses **Wine Stable v10.0.2**, and has been tested with **Sparx Enterprise Architect Trial v17.1** and **Sparx Enterprise Architect Full v17.1** .
 
 # How to run this project 
 
@@ -18,7 +18,7 @@ In order to build a `.dmg` archive, run `./create_dmg.sh` after a successful bui
 
 # Notes
 
-+ The project downloads Wine Crossover v23.7.1_1 from github. To ensure that the archive is not corrupted or that it has not been tampered with, it is assessed against a sha256 digest. To update to a new version, both the archive URI and the digest need to be updated in the `config.sh` script.
++ The project downloads wine-stable v10.0.2 as distributed by `brew`, without requireing the brew package manager. To ensure that the archive is not corrupted or that it has not been tampered with, it is assessed against a sha256 digest. To update to a new version, both the archive URI and the digest need to be updated in the `config.sh` script.
 
 + As wine menu builder (`winemenubuilder.exe`) could be mistakenly flagged as malware by certain anti-malware, it is excluded from final bundle. This won't create issues, as Sparx Enterprise Architect uses a ribbon interface, and does not require it.
 

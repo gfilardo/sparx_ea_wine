@@ -15,7 +15,7 @@ rm -f  "$SCRIPT_DIR/SparxEA.dmg"
 
 # Set up Wine environment
 echo "===================================================="
-echo "Setting up Wine Crossover environment..."
+echo "Setting up the Wine environment..."
 echo "===================================================="
 "$SCRIPT_DIR/setup_wine.sh"
 
