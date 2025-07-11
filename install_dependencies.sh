@@ -4,15 +4,15 @@ set -e
 # Set paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WINEPREFIX="$SCRIPT_DIR/sparxea/wineprefix"
-WINE_BIN="$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin/wine64"
+WINE_BIN="$SCRIPT_DIR/wine/Wine Stable.app/Contents/Resources/wine/bin/wine"
 WINETRICKS_PATH="$SCRIPT_DIR/winetricks"
 
 # Set Wine environment variables
 export WINEPREFIX="$WINEPREFIX"
 export WINEARCH="win64"
 export WINE="$WINE_BIN"
-export WINESERVER="$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin/wineserver"
-export PATH="$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin:$PATH"
+export WINESERVER="$SCRIPT_DIR/wine/Wine Stable.app/Contents/Resources/wine/bin/wineserver"
+export PATH="$SCRIPT_DIR/wine/Wine Stable.app/Contents/Resources/wine/bin:$PATH"
 
 echo "Configure Wine and its dependencies for Sparx EA..."
 
@@ -25,10 +25,10 @@ echo "Initializing Wine prefix..."
 
 # Apply registry settings for minimal configuration
 echo "Applying minimal registry configuration..."
-"$WINE" regedit "$SCRIPT_DIR/reg_minimal_config.reg"
+"$WINE" regedit /S "$SCRIPT_DIR/reg_minimal_config.reg"
 
 echo "Disable winemenubuilder..."
-"$WINE" regedit "$SCRIPT_DIR/reg_disable_winemenubuilder.reg"
+"$WINE" regedit /S "$SCRIPT_DIR/reg_disable_winemenubuilder.reg"
 
 # Check if winetricks exists and is executable
 # if [ ! -f "$WINETRICKS_PATH" ] || [ ! -x "$WINETRICKS_PATH" ]; then
@@ -53,8 +53,8 @@ echo "Disable winemenubuilder..."
 
 # Apply registry settings to disable ODBC
 echo "Applying ODBC registry configurations..."
-"$WINE" regedit "$SCRIPT_DIR/reg_disable_odbc.reg"
-"$WINE" regedit "$SCRIPT_DIR/reg_aggressive_odbc_disable.reg"
-"$WINE" regedit "$SCRIPT_DIR/reg_dummy_odbc.reg"
+"$WINE" regedit /S "$SCRIPT_DIR/reg_disable_odbc.reg"
+"$WINE" regedit /S "$SCRIPT_DIR/reg_aggressive_odbc_disable.reg"
+"$WINE" regedit /S "$SCRIPT_DIR/reg_dummy_odbc.reg"
 
 echo "Dependencies installation completed."
