@@ -9,7 +9,7 @@ The builder uses **Wine Stable v10.0.2**, and has been tested with **Sparx Enter
 # How to run this project 
 
 1) Place the 64bit installer for either the trial or the full version within the `sparx_installer` directory, with the name  `easetup_x64.msi`. The trial version can be downloaded from https://sparxsystems.com/products/ea/trial/request.html 
-2) Run `build.sh` from the terminal This will create the app bundle and open a finder window on the directory with the built app
+2) Either double-click on `BUILD.command` from the finder, or `build.sh` from the terminal This will create the app bundle and open a finder window on the directory with the built app
 3) Have fun running the Sparx EA.
 
 # Building a dmg
