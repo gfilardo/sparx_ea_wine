@@ -4,7 +4,7 @@ This project creates a MacOS app bundle for Sparx Enterprise Architect with Spar
 
 Once the bundle is created, it is possible to distribute, install and run it as any other MacOS App, without requiring a globally installed wine, as all the dependencies are within the bundle itself.
 
-The builder uses **Wine Staging 11.7** (from [Gcenx macOS Wine builds](https://github.com/Gcenx/macOS_Wine_builds)), and has been tested with **Sparx Enterprise Architect Trial v17.1** and **Sparx Enterprise Architect Full v17.1**.
+The builder uses **Wine Staging 11.7**, and has been tested with **Sparx Enterprise Architect Trial v17.1** and **Sparx Enterprise Architect Full v17.1**.
 
 On Apple Silicon Macs (M1/M2/M3/M4), the x86_64 Wine binary runs via Rosetta 2, which must be installed.
 
