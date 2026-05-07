@@ -2,7 +2,7 @@ Windows Registry Editor Version 5.00
 
 ; Basic Wine configuration
 [HKEY_CURRENT_USER\Software\Wine\Version]
-@="win7"
+@="win10"
 
 ; Disable crash dialog
 [HKEY_CURRENT_USER\Software\Wine\WineDbg]
@@ -49,12 +49,6 @@ Windows Registry Editor Version 5.00
 "StrictDrawOrdering"="enabled"
 "UseGLSL"="enabled"
 "VideoMemorySize"="512"
-
-; Allow Windows XP look and feel for applications
-[HKEY_CURRENT_USER\Software\Wine\X11 Driver]
-"ClientSideWithRender"="Y"
-"UseXVidMode"="Y"
-"Desktop"="N"
 
 ; Font settings
 [HKEY_CURRENT_USER\Software\Wine\Fonts\Replacements]

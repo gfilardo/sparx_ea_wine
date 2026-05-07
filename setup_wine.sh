@@ -8,14 +8,12 @@ source "$SCRIPT_DIR/config.sh"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WINE_DIR="$SCRIPT_DIR/wine"
 
-echo "Downloading Wine..."
-    
+echo "Downloading Wine Staging..."
+
 # Create Wine directory if it doesn't exist
 mkdir -p "$WINE_DIR"
 
-# Use Homebrew version of Wine-Crossover
-echo "Downloading Wine Crossover from GitHub release..."
-WINE_DOWNLOAD_PATH="/tmp/wine-crossover.tar.xz"
+WINE_DOWNLOAD_PATH="/tmp/wine-staging.tar.xz"
 
 # Download Wine
 curl -L -o "$WINE_DOWNLOAD_PATH" "$WINE_RELEASE_URL"
@@ -45,6 +43,10 @@ cp -R "/tmp/wine_extract"/* "$WINE_DIR/"
 # Remove winemenubuilder.exe to prevent issues
 echo "Removing winemenubuilder.exe..."
 find "$WINE_DIR" -name "winemenubuilder.exe" -exec rm -f {} \;
+
+# Remove macOS quarantine from all wine binaries so Gatekeeper doesn't block them
+echo "Removing quarantine attributes..."
+xattr -dr com.apple.quarantine "$WINE_DIR" 2>/dev/null || true
 
 # Clean up
 rm -rf "/tmp/wine_extract"

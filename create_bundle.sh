@@ -22,7 +22,6 @@ fi
 
 # Copy config files to bundle
 cp "$SCRIPT_DIR/reg_minimal_config.reg" "$RESOURCES_DIR/config/"
-cp "$SCRIPT_DIR/reg_fix_common_controls.sh" "$RESOURCES_DIR/config/"
 cp "$SCRIPT_DIR/reg_disable_odbc.reg" "$RESOURCES_DIR/config/"
 cp "$SCRIPT_DIR/reg_aggressive_odbc_disable.reg" "$RESOURCES_DIR/config/"
 
@@ -73,11 +72,11 @@ echo "Copying Wine..."
 mkdir -p "$RESOURCES_DIR/wine/bin"
 
 # Copy the Wine binaries directly to the bin directory
-cp -R "$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/bin/"* "$RESOURCES_DIR/wine/bin/"
+cp -R "$SCRIPT_DIR/wine/Wine Staging.app/Contents/Resources/wine/bin/"* "$RESOURCES_DIR/wine/bin/"
 # Copy other Wine directories
-cp -R "$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/lib" "$RESOURCES_DIR/wine/"
-cp -R "$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/share" "$RESOURCES_DIR/wine/"
-cp -R "$SCRIPT_DIR/wine/Wine Crossover.app/Contents/Resources/wine/include" "$RESOURCES_DIR/wine/" 2>/dev/null || true
+cp -R "$SCRIPT_DIR/wine/Wine Staging.app/Contents/Resources/wine/lib" "$RESOURCES_DIR/wine/"
+cp -R "$SCRIPT_DIR/wine/Wine Staging.app/Contents/Resources/wine/share" "$RESOURCES_DIR/wine/"
+cp -R "$SCRIPT_DIR/wine/Wine Staging.app/Contents/Resources/wine/include" "$RESOURCES_DIR/wine/" 2>/dev/null || true
 
 # Copy Sparx EA wineprefix
 echo "Copying Sparx EA..."
@@ -162,8 +161,11 @@ echo "Resources directory: \$RESOURCES_DIR"
 export WINEPREFIX="\$RESOURCES_DIR/sparxea/wineprefix"
 export WINEDEBUG="-all"  # Disable all debugging to reduce log size
 export WINEARCH=win64
-export WINEESYNC=1
+export WINEESYNC=0
+export WINEFSYNC=0
 export vblank_mode=0
+export WINELOADER="\$WINE_PATH"
+export WINEDLLPATH="\$RESOURCES_DIR/wine/lib/wine"
 export DYLD_FALLBACK_LIBRARY_PATH="\$RESOURCES_DIR/wine/lib:\$DYLD_FALLBACK_LIBRARY_PATH"
 
 # Use a special variable to indicate no ODBC
@@ -175,7 +177,7 @@ echo "WINEPREFIX=\$WINEPREFIX"
 echo "WINEARCH=\$WINEARCH"
 
 # Path to wine executable - use the corrected path
-WINE_PATH="\$RESOURCES_DIR/wine/bin/wine64"
+WINE_PATH="\$RESOURCES_DIR/wine/bin/wine"
 echo "Wine path: \$WINE_PATH"
 
 # Check if Wine executable exists
@@ -206,12 +208,12 @@ fi
 
 # Apply configurations
 echo "Applying registry configurations..."
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_minimal_config.reg" > /dev/null 2>&1 || echo "Error applying minimal_config.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_disable_odbc.reg" > /dev/null 2>&1 || echo "Error applying disable_odbc.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_aggressive_odbc_disable.reg" > /dev/null 2>&1 || echo "Error applying aggressive_odbc_disable.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_dummy_odbc.reg" > /dev/null 2>&1 || echo "Error applying dummy_odbc.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/ea_specific_overrides.reg" > /dev/null 2>&1 || echo "Error applying ea_specific_overrides.reg"
-"\$WINE_PATH" regedit "\$RESOURCES_DIR/config/reg_disable_winemenubuilder.reg" > /dev/null 2>&1 || echo "Error applying reg_disable_winemenubuilder.reg"
+"\$WINE_PATH" regedit /S "\$RESOURCES_DIR/config/reg_minimal_config.reg" > /dev/null 2>&1 || echo "Error applying minimal_config.reg"
+"\$WINE_PATH" regedit /S "\$RESOURCES_DIR/config/reg_disable_odbc.reg" > /dev/null 2>&1 || echo "Error applying disable_odbc.reg"
+"\$WINE_PATH" regedit /S "\$RESOURCES_DIR/config/reg_aggressive_odbc_disable.reg" > /dev/null 2>&1 || echo "Error applying aggressive_odbc_disable.reg"
+"\$WINE_PATH" regedit /S "\$RESOURCES_DIR/config/reg_dummy_odbc.reg" > /dev/null 2>&1 || echo "Error applying dummy_odbc.reg"
+"\$WINE_PATH" regedit /S "\$RESOURCES_DIR/config/ea_specific_overrides.reg" > /dev/null 2>&1 || echo "Error applying ea_specific_overrides.reg"
+"\$WINE_PATH" regedit /S "\$RESOURCES_DIR/config/reg_disable_winemenubuilder.reg" > /dev/null 2>&1 || echo "Error applying reg_disable_winemenubuilder.reg"
 
 # Create a config file to disable ODBC if it doesn't exist
 if [ ! -f "\$WINEPREFIX/drive_c/Program Files/Sparx Systems/EA/no_odbc.ini" ]; then
@@ -295,7 +297,7 @@ SCRIPT_DIR="\$(cd "\$(dirname "\${BASH_SOURCE[0]}")" && pwd)"
 echo "fix_common_controls.sh running from: \$SCRIPT_DIR"
 
 # WINE_PATH needs to be one level up from config directory
-WINE_PATH="\$SCRIPT_DIR/../wine/bin/wine64"
+WINE_PATH="\$SCRIPT_DIR/../wine/bin/wine"
 WINEPREFIX="\$SCRIPT_DIR/../sparxea/wineprefix"
 
 echo "Wine path: \$WINE_PATH"
