@@ -27,3 +27,5 @@ In order to build a `.dmg` archive, run `./create_dmg.sh` after a successful bui
 + The generated bundle has been tested to work on Archimate diagrams from a cloud repository. Other use cases have not been tested and might require additional configuration — e.g. ODBC drivers, msxml3, msxml4, mdac28 etc.
 Refer to the [SparxSystems documentation](https://sparxsystems.com/enterprise_architect_user_guide/17.1/getting_started/install_ea_wine.html) to address other use cases.
 
++ **Bundle portability**: the wineprefix created during the build contains absolute symlinks under `drive_c/users/` (Desktop, Documents, etc.) that point to the build machine's home directory. These will be broken on any other machine. To make the bundle truly portable, after copying the wineprefix into the bundle, replace all absolute symlinks inside it with empty directories — Wine will recreate the correct per-user symlinks on first launch. This should be implemented in `create_bundle.sh` after the `cp -R sparxea/wineprefix` step.
+

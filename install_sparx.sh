@@ -39,7 +39,7 @@ fi
 echo "Running MSI installer..."
 MSI_LOG="/tmp/sparxea_msi_install.log"
 set +e
-"$WINE_BIN" msiexec /i "$MSI_INSTALLER_FILE" /norestart "/l*v" "$MSI_LOG"
+"$WINE_BIN" msiexec /i "$MSI_INSTALLER_FILE" /qn /norestart "/l*v" "$MSI_LOG"
 MSI_EXIT=$?
 set -e
 # 0 = success, 3010 = success but restart needed, 1641 = success and reboot initiated
